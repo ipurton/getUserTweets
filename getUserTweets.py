@@ -54,10 +54,10 @@ with open(file_name, mode="wt", encoding="utf-8") as myfile:
 		text_to_print = str(tweet.text)
 			# Pull out text of tweet.
 		text_to_print = text_to_print.replace("&amp;", "&") 
-			# Ampersands are url-coded, need to be refortmatted
-		date_to_print = str(tweet.created_at) 
-			# Pull out date/time information for tweet. Characters 0:10 are the date, rest is time
-		to_write = date_to_print[0:10] + "\n" + text_to_print + "\n\n"
+			# Ampersands are url-coded, need to be reformatted
+		date = tweet.created_at # this is a datetime object
+		date_to_print = date.strftime("%B %d, %Y") # print month, day, and year in a formatted string
+		to_write = text_to_print + ": " + date_to_print + "\n\n"
 			# Perform basic formatting, store above into a single string
 		myfile.write(to_write)
 			# Write string to end of text file
